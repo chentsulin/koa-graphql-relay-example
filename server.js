@@ -31,16 +31,16 @@ var compiler = webpack({
         query: {stage: 0, plugins: [ './build/babelRelayPlugin' ]},
         test: /\.js$/,
       },
-    ]
+    ],
   },
-  output: { filename: 'app.js', path: '/' }
+  output: { filename: 'app.js', path: '/' },
 });
 
 var app = new WebpackDevServer(compiler, {
   contentBase: '/public/',
   proxy: { '/graphql': `http://localhost:${GRAPHQL_PORT}` },
   publicPath: '/js/',
-  stats: { colors: true }
+  stats: { colors: true },
 });
 
 // Serve static resources

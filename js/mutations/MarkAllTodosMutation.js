@@ -57,7 +57,7 @@ export default class MarkAllTodosMutation extends Relay.Mutation {
               complete: this.props.complete,
               id: edge.node.id,
             },
-          }))
+          })),
       };
     }
     if (this.props.viewer.totalCount != null) {

@@ -21,7 +21,7 @@ class TodoApp extends React.Component {
               todos
             </h1>
             <TodoTextInput
-              autoFocus={true}
+              autoFocus
               className="new-todo"
               onSave={this._handleTextInputSave}
               placeholder="What needs to be done?"

@@ -7,9 +7,6 @@ var ENTER_KEY_CODE = 13;
 var ESC_KEY_CODE = 27;
 
 export default class TodoTextInput extends React.Component {
-  static defaultProps = {
-    commitOnBlur: false,
-  }
   static propTypes = {
     className: PropTypes.string,
     commitOnBlur: PropTypes.bool.isRequired,
@@ -18,6 +15,9 @@ export default class TodoTextInput extends React.Component {
     onDelete: PropTypes.func,
     onSave: PropTypes.func.isRequired,
     placeholder: PropTypes.string,
+  }
+  static defaultProps = {
+    commitOnBlur: false,
   }
   state = {
     isEditing: false,

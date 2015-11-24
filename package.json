@@ -3,6 +3,7 @@
   "scripts": {
     "start": "babel-node ./server.js",
     "update-schema": "babel-node ./scripts/updateSchema.js",
+    "lint": "./node_modules/.bin/eslint .",
     "preinstall": "cd ../.. && npm install --ignore-scripts && cd scripts/babel-relay-plugin && npm install --ignore-scripts"
   },
   "keywords": [],
@@ -30,5 +31,10 @@
     "todomvc-common": "^1.0.2",
     "webpack": "^1.12.8",
     "webpack-dev-server": "^1.12.1"
+  },
+  "devDependencies": {
+    "babel-eslint": "^4.1.6",
+    "eslint": "^1.10.1",
+    "eslint-config-airbnb": "^1.0.0"
   }
 }
