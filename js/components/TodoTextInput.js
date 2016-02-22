@@ -15,10 +15,10 @@ export default class TodoTextInput extends React.Component {
     onDelete: PropTypes.func,
     onSave: PropTypes.func.isRequired,
     placeholder: PropTypes.string,
-  }
+  };
   static defaultProps = {
     commitOnBlur: false,
-  }
+  };
   state = {
     isEditing: false,
     text: this.props.initialValue || '',
@@ -36,22 +36,22 @@ export default class TodoTextInput extends React.Component {
       this.props.onSave(newText);
       this.setState({text: ''});
     }
-  }
+  };
   _handleBlur = () => {
     if (this.props.commitOnBlur) {
       this._commitChanges();
     }
-  }
+  };
   _handleChange = (e) => {
     this.setState({text: e.target.value});
-  }
+  };
   _handleKeyDown = (e) => {
     if (this.props.onCancel && e.keyCode === ESC_KEY_CODE) {
       this.props.onCancel();
     } else if (e.keyCode === ENTER_KEY_CODE) {
       this._commitChanges();
     }
-  }
+  };
   render() {
     return (
       <input

@@ -14,7 +14,7 @@ class TodoList extends React.Component {
         viewer: this.props.viewer,
       })
     );
-  }
+  };
   renderTodos() {
     return this.props.viewer.todos.edges.map(edge =>
       <Todo
@@ -62,7 +62,7 @@ export default Relay.createContainer(TodoList, {
     }
     return {
       status: nextStatus,
-      limit: Number.MAX_SAFE_INTEGER || 9007199254740991,
+      limit: 2147483647,  // GraphQLInt
     };
   },
 

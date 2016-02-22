@@ -10,7 +10,7 @@ class TodoApp extends React.Component {
     Relay.Store.update(
       new AddTodoMutation({text, viewer: this.props.viewer})
     );
-  }
+  };
   render() {
     var hasTodos = this.props.viewer.totalCount > 0;
     return (

@@ -1,4 +1,4 @@
-import 'babel/polyfill';
+import 'babel-polyfill';
 import 'todomvc-common';
 import { createHashHistory } from 'history';
 import { IndexRoute, Route } from 'react-router';
