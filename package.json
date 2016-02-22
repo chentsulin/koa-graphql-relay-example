@@ -3,8 +3,7 @@
   "scripts": {
     "start": "babel-node ./server.js",
     "update-schema": "babel-node ./scripts/updateSchema.js",
-    "lint": "./node_modules/.bin/eslint .",
-    "preinstall": "cd ../.. && npm install --ignore-scripts && cd scripts/babel-relay-plugin && npm install --ignore-scripts"
+    "lint": "./node_modules/.bin/eslint ."
   },
   "keywords": [],
   "author": "",
