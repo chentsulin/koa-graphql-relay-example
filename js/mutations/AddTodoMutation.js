@@ -14,7 +14,7 @@ export default class AddTodoMutation extends Relay.Mutation {
   }
   getFatQuery() {
     return Relay.QL`
-      fragment on AddTodoPayload {
+      fragment on AddTodoPayload @relay(pattern: true) {
         todoEdge,
         viewer {
           todos,

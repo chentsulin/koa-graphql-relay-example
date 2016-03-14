@@ -20,7 +20,7 @@ export default class ChangeTodoStatusMutation extends Relay.Mutation {
   }
   getFatQuery() {
     return Relay.QL`
-      fragment on ChangeTodoStatusPayload {
+      fragment on ChangeTodoStatusPayload @relay(pattern: true) {
         todo {
           complete,
         },
@@ -47,7 +47,7 @@ export default class ChangeTodoStatusMutation extends Relay.Mutation {
     };
   }
   getOptimisticResponse() {
-    var viewerPayload = {id: this.props.viewer.id};
+    const viewerPayload = {id: this.props.viewer.id};
     if (this.props.viewer.completedCount != null) {
       viewerPayload.completedCount = this.props.complete ?
         this.props.viewer.completedCount + 1 :

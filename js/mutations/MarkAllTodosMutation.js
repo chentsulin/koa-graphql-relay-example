@@ -25,7 +25,7 @@ export default class MarkAllTodosMutation extends Relay.Mutation {
   }
   getFatQuery() {
     return Relay.QL`
-      fragment on MarkAllTodosPayload {
+      fragment on MarkAllTodosPayload @relay(pattern: true) {
         viewer {
           completedCount,
           todos,
@@ -47,7 +47,7 @@ export default class MarkAllTodosMutation extends Relay.Mutation {
     };
   }
   getOptimisticResponse() {
-    var viewerPayload = {id: this.props.viewer.id};
+    const viewerPayload = {id: this.props.viewer.id};
     if (this.props.todos && this.props.todos.edges) {
       viewerPayload.todos = {
         edges: this.props.todos.edges

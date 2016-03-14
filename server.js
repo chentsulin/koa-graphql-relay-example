@@ -11,7 +11,7 @@ const APP_PORT = 3000;
 const GRAPHQL_PORT = 8080;
 
 // Expose a GraphQL endpoint
-var graphQLServer = koa();
+const graphQLServer = koa();
 
 graphQLServer.use(mount('/', graphQLHTTP({ schema, pretty: true })));
 
@@ -20,7 +20,7 @@ graphQLServer.listen(GRAPHQL_PORT, () => console.log(
 ));
 
 // Serve the Relay app
-var compiler = webpack({
+const compiler = webpack({
   devtool: 'cheap-module-eval-source-map',
   entry: path.resolve(__dirname, 'js', 'app.js'),
   module: {
@@ -35,7 +35,7 @@ var compiler = webpack({
   output: { filename: 'app.js', path: '/' },
 });
 
-var app = new WebpackDevServer(compiler, {
+const app = new WebpackDevServer(compiler, {
   contentBase: '/public/',
   proxy: { '/graphql': `http://localhost:${GRAPHQL_PORT}` },
   publicPath: '/js/',
