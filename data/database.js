@@ -1,5 +1,5 @@
-export class Todo extends Object {}
-export class User extends Object {}
+export class Todo {}
+export class User {}
 
 // Mock authenticated ID
 const VIEWER_ID = 'me';
