@@ -25,7 +25,7 @@ export default class MarkAllTodosMutation extends Relay.Mutation {
   }
   getFatQuery() {
     return Relay.QL`
-      fragment on MarkAllTodosPayload {
+      fragment on MarkAllTodosPayload @relay(pattern: true) {
         viewer {
           completedCount,
           todos,
