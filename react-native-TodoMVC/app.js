@@ -31,7 +31,7 @@ export default class TodoMVC extends Component {
     return (
       <RootContainer
         Component={TodoApp}
-        route={new TodoAppRoute({status: 'any'})}
+        route={new TodoAppRoute({ status: 'any' })}
       />
     );
   }

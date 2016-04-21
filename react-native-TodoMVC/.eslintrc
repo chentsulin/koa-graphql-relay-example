@@ -2,17 +2,17 @@
   "extends": "airbnb",
   "parser": "babel-eslint",
   "env": {
-    "browser": true,
     "node": true
   },
   "rules": {
     "eqeqeq": 0,
     "no-console": 0,
     "no-use-before-define": 0,
-    "no-else-return": 0,
     "react/prop-types": 0,
     "react/jsx-closing-bracket-location": 0,
+    "react/prefer-stateless-function": 0,
     "react/jsx-no-bind": 0,
-    "react/prefer-stateless-function": 0
+    "react/jsx-boolean-value": 0,
+    "react/sort-comp": 0
   }
 }

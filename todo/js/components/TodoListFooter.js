@@ -1,4 +1,4 @@
-import {IndexLink, Link} from 'react-router';
+import { IndexLink, Link } from 'react-router';
 import RemoveCompletedTodosMutation from '../mutations/RemoveCompletedTodosMutation';
 
 import React from 'react';

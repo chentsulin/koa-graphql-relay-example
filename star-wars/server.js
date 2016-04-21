@@ -5,7 +5,7 @@ import mount from 'koa-mount';
 import path from 'path';
 import webpack from 'webpack';
 import WebpackDevServer from 'webpack-dev-server';
-import {schema} from './data/schema';
+import { schema } from './data/schema';
 
 const APP_PORT = 3000;
 const GRAPHQL_PORT = 8080;
@@ -31,7 +31,7 @@ const compiler = webpack({
       },
     ],
   },
-  output: {filename: 'app.js', path: '/'},
+  output: { filename: 'app.js', path: '/' },
 });
 
 const app = new WebpackDevServer(compiler, {

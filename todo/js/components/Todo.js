@@ -37,16 +37,16 @@ class Todo extends React.Component {
   _handleTextInputSave = (text) => {
     this._setEditMode(false);
     Relay.Store.update(
-      new RenameTodoMutation({todo: this.props.todo, text})
+      new RenameTodoMutation({ todo: this.props.todo, text })
     );
   };
   _removeTodo() {
     Relay.Store.update(
-      new RemoveTodoMutation({todo: this.props.todo, viewer: this.props.viewer})
+      new RemoveTodoMutation({ todo: this.props.todo, viewer: this.props.viewer })
     );
   }
   _setEditMode = (shouldEdit) => {
-    this.setState({isEditing: shouldEdit});
+    this.setState({ isEditing: shouldEdit });
   };
   renderTextInput() {
     return (

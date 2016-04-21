@@ -8,9 +8,8 @@
   "rules": {
     "eqeqeq": 0,
     "no-console": 0,
-    "no-var": 0,
     "no-use-before-define": 0,
-    "vars-on-top": 0,
-    "react/prop-types": 0
+    "react/prop-types": 0,
+    "react/jsx-closing-bracket-location": 0
   }
 }

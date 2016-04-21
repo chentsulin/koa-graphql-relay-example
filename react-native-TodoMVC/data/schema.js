@@ -48,9 +48,9 @@ import {
   renameTodo,
 } from './database';
 
-var {nodeInterface, nodeField} = nodeDefinitions(
+var { nodeInterface, nodeField } = nodeDefinitions(
   (globalId) => {
-    var {type, id} = fromGlobalId(globalId);
+    var { type, id } = fromGlobalId(globalId);
     if (type === 'Todo') {
       return getTodo(id);
     } else if (type === 'User') {
@@ -105,7 +105,7 @@ var GraphQLUser = new GraphQLObjectType({
         },
         ...connectionArgs,
       },
-      resolve: (obj, {status, ...args}) =>
+      resolve: (obj, { status, ...args }) =>
         connectionFromArray(getTodos(status), args),
     },
     totalCount: {
@@ -139,7 +139,7 @@ var GraphQLAddTodoMutation = mutationWithClientMutationId({
   outputFields: {
     todoEdge: {
       type: GraphQLTodoEdge,
-      resolve: ({localTodoId}) => {
+      resolve: ({ localTodoId }) => {
         var todo = getTodo(localTodoId);
         return {
           cursor: cursorForObjectInConnection(getTodos(), todo),
@@ -152,9 +152,9 @@ var GraphQLAddTodoMutation = mutationWithClientMutationId({
       resolve: () => getViewer(),
     },
   },
-  mutateAndGetPayload: ({text}) => {
+  mutateAndGetPayload: ({ text }) => {
     var localTodoId = addTodo(text);
-    return {localTodoId};
+    return { localTodoId };
   },
 });
 
@@ -167,17 +167,17 @@ var GraphQLChangeTodoStatusMutation = mutationWithClientMutationId({
   outputFields: {
     todo: {
       type: GraphQLTodo,
-      resolve: ({localTodoId}) => getTodo(localTodoId),
+      resolve: ({ localTodoId }) => getTodo(localTodoId),
     },
     viewer: {
       type: GraphQLUser,
       resolve: () => getViewer(),
     },
   },
-  mutateAndGetPayload: ({id, complete}) => {
+  mutateAndGetPayload: ({ id, complete }) => {
     var localTodoId = fromGlobalId(id).id;
     changeTodoStatus(localTodoId, complete);
-    return {localTodoId};
+    return { localTodoId };
   },
 });
 
@@ -189,16 +189,16 @@ var GraphQLMarkAllTodosMutation = mutationWithClientMutationId({
   outputFields: {
     changedTodos: {
       type: new GraphQLList(GraphQLTodo),
-      resolve: ({changedTodoLocalIds}) => changedTodoLocalIds.map(getTodo),
+      resolve: ({ changedTodoLocalIds }) => changedTodoLocalIds.map(getTodo),
     },
     viewer: {
       type: GraphQLUser,
       resolve: () => getViewer(),
     },
   },
-  mutateAndGetPayload: ({complete}) => {
+  mutateAndGetPayload: ({ complete }) => {
     var changedTodoLocalIds = markAllTodos(complete);
-    return {changedTodoLocalIds};
+    return { changedTodoLocalIds };
   },
 });
 
@@ -208,7 +208,7 @@ var GraphQLRemoveCompletedTodosMutation = mutationWithClientMutationId({
   outputFields: {
     deletedTodoIds: {
       type: new GraphQLList(GraphQLString),
-      resolve: ({deletedTodoIds}) => deletedTodoIds,
+      resolve: ({ deletedTodoIds }) => deletedTodoIds,
     },
     viewer: {
       type: GraphQLUser,
@@ -218,7 +218,7 @@ var GraphQLRemoveCompletedTodosMutation = mutationWithClientMutationId({
   mutateAndGetPayload: () => {
     var deletedTodoLocalIds = removeCompletedTodos();
     var deletedTodoIds = deletedTodoLocalIds.map(toGlobalId.bind(null, 'Todo'));
-    return {deletedTodoIds};
+    return { deletedTodoIds };
   },
 });
 
@@ -230,17 +230,17 @@ var GraphQLRemoveTodoMutation = mutationWithClientMutationId({
   outputFields: {
     deletedTodoId: {
       type: GraphQLID,
-      resolve: ({id}) => id,
+      resolve: ({ id }) => id,
     },
     viewer: {
       type: GraphQLUser,
       resolve: () => getViewer(),
     },
   },
-  mutateAndGetPayload: ({id}) => {
+  mutateAndGetPayload: ({ id }) => {
     var localTodoId = fromGlobalId(id).id;
     removeTodo(localTodoId);
-    return {id};
+    return { id };
   },
 });
 
@@ -253,13 +253,13 @@ var GraphQLRenameTodoMutation = mutationWithClientMutationId({
   outputFields: {
     todo: {
       type: GraphQLTodo,
-      resolve: ({localTodoId}) => getTodo(localTodoId),
+      resolve: ({ localTodoId }) => getTodo(localTodoId),
     },
   },
-  mutateAndGetPayload: ({id, text}) => {
+  mutateAndGetPayload: ({ id, text }) => {
     var localTodoId = fromGlobalId(id).id;
     renameTodo(localTodoId, text);
-    return {localTodoId};
+    return { localTodoId };
   },
 });
 

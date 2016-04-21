@@ -32,7 +32,7 @@ class StarWarsApp extends React.Component {
         faction: this.props.factions[this.state.factionId],
       })
     );
-    this.setState({shipName: ''});
+    this.setState({ shipName: '' });
   }
 
   handleInputChange(e) {
@@ -48,7 +48,7 @@ class StarWarsApp extends React.Component {
   }
 
   render() {
-    const {factions} = this.props;
+    const { factions } = this.props;
     return (
       <div>
         <ol>
@@ -56,7 +56,7 @@ class StarWarsApp extends React.Component {
             <li key={faction.id}>
               <h1>{faction.name}</h1>
               <ol>
-                {faction.ships.edges.map(({node}) => (
+                {faction.ships.edges.map(({ node }) => (
                   <li key={node.id}><StarWarsShip ship={node} /></li>
                 ))}
               </ol>
@@ -67,11 +67,17 @@ class StarWarsApp extends React.Component {
               <ol>
                 <li>
                   Name:
-                  <input type="text" value={this.state.shipName} onChange={this.handleInputChange.bind(this)} />
+                  <input
+                    type="text"
+                    value={this.state.shipName}
+                    onChange={this.handleInputChange.bind(this)}
+                  />
                 </li>
                 <li>
                   Faction:
-                  <select onChange={this.handleSelectionChange.bind(this)} value={this.state.factionId}>
+                  <select
+                    onChange={this.handleSelectionChange.bind(this)}
+                    value={this.state.factionId}>
                     <option value="0">Galactic Empire</option>
                     <option value="1">Alliance to Restore the Republic</option>
                   </select>

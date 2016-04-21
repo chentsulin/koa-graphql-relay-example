@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-const {PropTypes} = React;
+const { PropTypes } = React;
 
 const ENTER_KEY_CODE = 13;
 const ESC_KEY_CODE = 27;
@@ -34,7 +34,7 @@ export default class TodoTextInput extends React.Component {
       this.props.onCancel();
     } else if (newText !== '') {
       this.props.onSave(newText);
-      this.setState({text: ''});
+      this.setState({ text: '' });
     }
   };
   _handleBlur = () => {
@@ -43,7 +43,7 @@ export default class TodoTextInput extends React.Component {
     }
   };
   _handleChange = (e) => {
-    this.setState({text: e.target.value});
+    this.setState({ text: e.target.value });
   };
   _handleKeyDown = (e) => {
     if (this.props.onCancel && e.keyCode === ESC_KEY_CODE) {

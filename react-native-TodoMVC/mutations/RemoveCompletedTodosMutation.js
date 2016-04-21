@@ -67,7 +67,7 @@ export default class RemoveCompletedTodosMutation extends Relay.Mutation {
         .filter(edge => edge.node.complete)
         .map(edge => edge.node.id);
     }
-    var {completedCount, totalCount} = this.props.viewer;
+    var { completedCount, totalCount } = this.props.viewer;
     if (completedCount != null && totalCount != null) {
       newTotalCount = totalCount - completedCount;
     }

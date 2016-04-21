@@ -52,7 +52,7 @@ export default class TodoTextInput extends Component {
     } else if (newText !== '') {
       this.props.onSave(newText);
       if (this._mounted !== false) {
-        this.setState({text: ''});
+        this.setState({ text: '' });
       }
     }
   }
@@ -63,7 +63,7 @@ export default class TodoTextInput extends Component {
   }
   _handleChangeText(text) {
     if (this._mounted !== false) {
-      this.setState({text: text});
+      this.setState({ text: text });
     }
   }
   _handleSubmitEditing() {

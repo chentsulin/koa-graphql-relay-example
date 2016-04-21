@@ -39,9 +39,9 @@ import {
   getTurnsRemaining,
 } from './database';
 
-const {nodeInterface, nodeField} = nodeDefinitions(
+const { nodeInterface, nodeField } = nodeDefinitions(
   (globalId) => {
-    const {type, id} = fromGlobalId(globalId);
+    const { type, id } = fromGlobalId(globalId);
     if (type === 'Game') {
       return getGame(id);
     } else if (type === 'HidingSpot') {
@@ -61,7 +61,7 @@ const {nodeInterface, nodeField} = nodeDefinitions(
   }
 );
 
-var gameType = new GraphQLObjectType({
+const gameType = new GraphQLObjectType({
   name: 'Game',
   description: 'A treasure search game',
   fields: () => ({
@@ -81,7 +81,7 @@ var gameType = new GraphQLObjectType({
   interfaces: [nodeInterface],
 });
 
-var hidingSpotType = new GraphQLObjectType({
+const hidingSpotType = new GraphQLObjectType({
   name: 'HidingSpot',
   description: 'A place where you might find treasure',
   fields: () => ({
@@ -106,8 +106,8 @@ var hidingSpotType = new GraphQLObjectType({
   interfaces: [nodeInterface],
 });
 
-var {connectionType: hidingSpotConnection} =
-  connectionDefinitions({name: 'HidingSpot', nodeType: hidingSpotType});
+const { connectionType: hidingSpotConnection } =
+  connectionDefinitions({ name: 'HidingSpot', nodeType: hidingSpotType });
 
 const queryType = new GraphQLObjectType({
   name: 'Query',
@@ -128,17 +128,17 @@ const CheckHidingSpotForTreasureMutation = mutationWithClientMutationId({
   outputFields: {
     hidingSpot: {
       type: hidingSpotType,
-      resolve: ({localHidingSpotId}) => getHidingSpot(localHidingSpotId),
+      resolve: ({ localHidingSpotId }) => getHidingSpot(localHidingSpotId),
     },
     game: {
       type: gameType,
       resolve: () => getGame(),
     },
   },
-  mutateAndGetPayload: ({id}) => {
+  mutateAndGetPayload: ({ id }) => {
     const localHidingSpotId = fromGlobalId(id).id;
     checkHidingSpotForTreasure(localHidingSpotId);
-    return {localHidingSpotId};
+    return { localHidingSpotId };
   },
 });
 

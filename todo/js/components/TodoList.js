@@ -51,7 +51,7 @@ export default Relay.createContainer(TodoList, {
     status: null,
   },
 
-  prepareVariables({status}) {
+  prepareVariables({ status }) {
     let nextStatus;
     if (status === 'active' || status === 'completed') {
       nextStatus = status;

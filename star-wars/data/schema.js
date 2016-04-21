@@ -10,8 +10,6 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-'use strict';
-
 import {
   GraphQLID,
   GraphQLList,
@@ -121,9 +119,9 @@ import {
  * The first method defines the way we resolve an ID to its object.
  * The second defines the way we resolve a node object to its GraphQL type.
  */
-const {nodeInterface, nodeField} = nodeDefinitions(
+const { nodeInterface, nodeField } = nodeDefinitions(
   (globalId) => {
-    const {type, id} = fromGlobalId(globalId);
+    const { type, id } = fromGlobalId(globalId);
     if (type === 'Faction') {
       return getFaction(id);
     } else if (type === 'Ship') {
@@ -132,7 +130,7 @@ const {nodeInterface, nodeField} = nodeDefinitions(
       return null;
     }
   },
-  (obj) => {
+  (obj) => { // eslint-disable-line arrow-body-style
     return obj.ships ? factionType : shipType;
   }
 );
@@ -146,7 +144,7 @@ const {nodeInterface, nodeField} = nodeDefinitions(
  *     name: String
  *   }
  */
-var shipType = new GraphQLObjectType({
+const shipType = new GraphQLObjectType({
   name: 'Ship',
   description: 'A ship in the Star Wars saga',
   fields: () => ({
@@ -178,7 +176,7 @@ var shipType = new GraphQLObjectType({
 const {
   connectionType: shipConnection,
   edgeType: ShipEdge,
-} = connectionDefinitions({name: 'Ship', nodeType: shipType});
+} = connectionDefinitions({ name: 'Ship', nodeType: shipType });
 
 /**
  * We define our faction type, which implements the node interface.
@@ -190,7 +188,7 @@ const {
  *     ships: ShipConnection
  *   }
  */
-var factionType = new GraphQLObjectType({
+const factionType = new GraphQLObjectType({
   name: 'Faction',
   description: 'A faction in the Star Wars saga',
   fields: () => ({
@@ -237,7 +235,7 @@ const queryType = new GraphQLObjectType({
           type: new GraphQLList(GraphQLString),
         },
       },
-      resolve: (root, {names}) => getFactions(names),
+      resolve: (root, { names }) => getFactions(names),
     },
     node: nodeField,
   }),
@@ -288,11 +286,11 @@ const shipMutation = mutationWithClientMutationId({
       resolve: (payload) => getFaction(payload.factionId),
     },
   },
-  mutateAndGetPayload: ({shipName, factionId}) => {
+  mutateAndGetPayload: ({ shipName, factionId }) => {
     const newShip = createShip(shipName, factionId);
     return {
       shipId: newShip.id,
-      factionId: factionId,
+      factionId,
     };
   },
 });

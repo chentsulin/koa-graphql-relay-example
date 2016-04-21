@@ -30,7 +30,7 @@ class TodoApp extends Component {
     this._handleStatusChange = this._handleStatusChange.bind(this);
   }
   _handleStatusChange(status) {
-    this.props.relay.setVariables({status});
+    this.props.relay.setVariables({ status });
   }
   render() {
     return (
@@ -76,8 +76,8 @@ export default Relay.createContainer(TodoApp, {
     viewer: variables => Relay.QL`
       fragment on User {
         totalCount
-        ${TodoList.getFragment('viewer', {status: variables.status})}
-        ${TodoListFooter.getFragment('viewer', {status: variables.status})}
+        ${TodoList.getFragment('viewer', { status: variables.status })}
+        ${TodoListFooter.getFragment('viewer', { status: variables.status })}
       }
     `,
   },

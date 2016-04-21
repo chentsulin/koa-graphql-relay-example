@@ -44,7 +44,7 @@ export default class StatusButton extends Component {
           {this.props.children}
         </Text>
       </TouchableHighlight>
-    )
+    );
   }
 }
 

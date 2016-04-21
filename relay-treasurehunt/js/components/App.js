@@ -57,15 +57,13 @@ class App extends React.Component {
     return !this.props.game.turnsRemaining || this._hasFoundTreasure();
   }
   renderGameBoard() {
-    return this.props.game.hidingSpots.edges.map(edge => {
-      return (
-        <div
-          key={edge.node.id}
-          onClick={this._handleHidingSpotClick.bind(this, edge.node)}
-          style={this._getHidingSpotStyle(edge.node)}
-        />
-      );
-    });
+    return this.props.game.hidingSpots.edges.map(edge =>
+      <div
+        key={edge.node.id}
+        onClick={this._handleHidingSpotClick.bind(this, edge.node)}
+        style={this._getHidingSpotStyle(edge.node)}
+      />
+    );
   }
   render() {
     let headerText;

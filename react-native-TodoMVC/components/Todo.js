@@ -67,11 +67,11 @@ class Todo extends Component {
   _handleTextInputSave(text) {
     this._setEditMode(false);
     Relay.Store.commitUpdate(
-      new RenameTodoMutation({todo: this.props.todo, text})
+      new RenameTodoMutation({ todo: this.props.todo, text })
     );
   }
   _setEditMode(shouldEdit) {
-    this.setState({isEditing: shouldEdit});
+    this.setState({ isEditing: shouldEdit });
   }
   renderCompleteCheckbox() {
     const imageModule = this.props.todo.complete ?

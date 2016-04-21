@@ -41,7 +41,7 @@ class TodoList extends Component {
   };
   constructor(props, context) {
     super(props, context);
-    const {edges} = props.viewer.todos;
+    const { edges } = props.viewer.todos;
     this.state = {
       initialListSize: edges.length,
       listScrollEnabled: true,
@@ -66,11 +66,11 @@ class TodoList extends Component {
     );
   }
   _handleSwipeInactive(swipeInactive) {
-    this.setState({listScrollEnabled: swipeInactive});
+    this.setState({ listScrollEnabled: swipeInactive });
   }
   _handleTextInputSave(text) {
     Relay.Store.commitUpdate(
-      new AddTodoMutation({text, viewer: this.props.viewer})
+      new AddTodoMutation({ text, viewer: this.props.viewer })
     );
   }
   _handleTodoDestroy(todo) {
@@ -155,7 +155,7 @@ export default Relay.createContainer(TodoList, {
   initialVariables: {
     status: 'any',
   },
-  prepareVariables({status}) {
+  prepareVariables({ status }) {
     var nextStatus;
     if (status === 'active' || status === 'completed') {
       nextStatus = status;
@@ -226,7 +226,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     height: 44,
     justifyContent: 'center',
-    transform: [{rotate: '90deg'}],
+    transform: [{ rotate: '90deg' }],
     width: 44,
   },
   markAllButtonDisabled: {
