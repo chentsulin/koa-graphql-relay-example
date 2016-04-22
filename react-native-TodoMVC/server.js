@@ -6,7 +6,7 @@ import { schema } from './data/schema';
 const GRAPHQL_PORT = 8080;
 
 // Expose a GraphQL endpoint
-var graphQLServer = koa();
+const graphQLServer = koa();
 
 graphQLServer.use(mount('/', graphQLHTTP({ schema, pretty: true })));
 
