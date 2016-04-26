@@ -12,7 +12,6 @@
 
 'use strict';
 
-import Relay from 'react-relay';
 import React, {
   Component,
   PropTypes,
