@@ -10,8 +10,6 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-'use strict';
-
 import TodoApp from './components/TodoApp';
 import TodoAppRoute from './routes/TodoAppRoute';
 import React, {

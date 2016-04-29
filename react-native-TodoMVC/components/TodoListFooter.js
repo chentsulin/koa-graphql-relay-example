@@ -10,8 +10,6 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-'use strict';
-
 import Relay from 'react-relay';
 import RemoveCompletedTodosMutation from '../mutations/RemoveCompletedTodosMutation';
 import React, {

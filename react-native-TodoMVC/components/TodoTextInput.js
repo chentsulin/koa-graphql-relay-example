@@ -10,8 +10,6 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-'use strict';
-
 import React, {
   Component,
   PropTypes,
@@ -63,7 +61,7 @@ export default class TodoTextInput extends Component {
   }
   _handleChangeText(text) {
     if (this._mounted !== false) {
-      this.setState({ text: text });
+      this.setState({ text });
     }
   }
   _handleSubmitEditing() {

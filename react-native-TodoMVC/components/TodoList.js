@@ -10,8 +10,6 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-'use strict';
-
 import AddTodoMutation from '../mutations/AddTodoMutation';
 import MarkAllTodosMutation from '../mutations/MarkAllTodosMutation';
 import Relay from 'react-relay';
