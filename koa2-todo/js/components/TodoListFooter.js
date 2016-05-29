@@ -6,7 +6,7 @@ import Relay from 'react-relay';
 
 class TodoListFooter extends React.Component {
   _handleRemoveCompletedTodosClick = () => {
-    Relay.Store.update(
+    this.props.relay.update(
       new RemoveCompletedTodosMutation({
         todos: this.props.viewer.todos,
         viewer: this.props.viewer,

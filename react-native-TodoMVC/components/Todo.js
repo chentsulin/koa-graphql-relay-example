@@ -44,7 +44,7 @@ class Todo extends Component {
   }
   _handleCompletePress() {
     const complete = !this.props.todo.complete;
-    Relay.Store.commitUpdate(
+    this.props.relay.commitUpdate(
       new ChangeTodoStatusMutation({
         complete,
         todo: this.props.todo,
@@ -64,7 +64,7 @@ class Todo extends Component {
   }
   _handleTextInputSave(text) {
     this._setEditMode(false);
-    Relay.Store.commitUpdate(
+    this.props.relay.commitUpdate(
       new RenameTodoMutation({ todo: this.props.todo, text })
     );
   }
