@@ -12,9 +12,8 @@
 
 import Relay from 'react-relay';
 import RemoveCompletedTodosMutation from '../mutations/RemoveCompletedTodosMutation';
-import React, {
-  Component,
-  PropTypes,
+import React, { Component, PropTypes } from 'react';
+import {
   StyleSheet,
   Text,
   TouchableHighlight,
@@ -63,17 +62,14 @@ export default Relay.createContainer(TodoListFooter, {
   initialVariables: {
     status: 'any',
   },
-  prepareVariables(prevVars) {
-    return {
-      ...prevVars,
-      limit: 2147483647,  // GraphQLInt
-    };
-  },
   fragments: {
     viewer: () => Relay.QL`
       fragment on User {
         completedCount
-        todos(status: $status, first: $limit) {
+        todos(
+          status: $status,
+          first: 2147483647  # max GraphQLInt
+        ) {
           ${RemoveCompletedTodosMutation.getFragment('todos')}
         }
         totalCount

@@ -1,4 +1,3 @@
-import 'babel-polyfill';
 import 'todomvc-common';
 
 import React from 'react';
