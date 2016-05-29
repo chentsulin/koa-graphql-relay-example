@@ -13,7 +13,7 @@ class Todo extends React.Component {
   };
   _handleCompleteChange = (e) => {
     const complete = e.target.checked;
-    this.props.relay.update(
+    this.props.relay.commitUpdate(
       new ChangeTodoStatusMutation({
         complete,
         todo: this.props.todo,
@@ -36,12 +36,12 @@ class Todo extends React.Component {
   };
   _handleTextInputSave = (text) => {
     this._setEditMode(false);
-    this.props.relay.update(
+    this.props.relay.commitUpdate(
       new RenameTodoMutation({ todo: this.props.todo, text })
     );
   };
   _removeTodo() {
-    this.props.relay.update(
+    this.props.relay.commitUpdate(
       new RemoveTodoMutation({ todo: this.props.todo, viewer: this.props.viewer })
     );
   }
