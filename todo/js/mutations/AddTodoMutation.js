@@ -30,12 +30,11 @@ export default class AddTodoMutation extends Relay.Mutation {
       parentID: this.props.viewer.id,
       connectionName: 'todos',
       edgeName: 'todoEdge',
-      rangeBehaviors: ({status}) => {
+      rangeBehaviors: ({ status }) => {
         if (status === 'completed') {
           return 'ignore';
-        } else {
-          return 'append';
         }
+        return 'append';
       },
     }];
   }
