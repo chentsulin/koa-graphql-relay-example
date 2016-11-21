@@ -6,7 +6,7 @@
     "node": true
   },
   "rules": {
-    "class-method-use-this": "off",
+    "class-methods-use-this": "off",
     "no-use-before-define": "off",
     "react/jsx-filename-extension": ["error", {
       "extensions": [".js"]

@@ -4,32 +4,32 @@ export default class ChangeTodoStatusMutation extends Relay.Mutation {
   static fragments = {
     todo: () => Relay.QL`
       fragment on Todo {
-        id,
+        id
       }
     `,
     // TODO: Mark completedCount optional
     viewer: () => Relay.QL`
       fragment on User {
-        id,
-        completedCount,
+        id
+        completedCount
       }
     `,
   };
 
   getMutation() {
-    return Relay.QL`mutation{changeTodoStatus}`;
+    return Relay.QL`mutation { changeTodoStatus }`;
   }
 
   getFatQuery() {
     return Relay.QL`
       fragment on ChangeTodoStatusPayload @relay(pattern: true) {
         todo {
-          complete,
-        },
+          complete
+        }
         viewer {
-          completedCount,
-          todos,
-        },
+          completedCount
+          todos
+        }
       }
     `;
   }
@@ -48,22 +48,6 @@ export default class ChangeTodoStatusMutation extends Relay.Mutation {
     return {
       complete: this.props.complete,
       id: this.props.todo.id,
-    };
-  }
-
-  getOptimisticResponse() {
-    const viewerPayload = { id: this.props.viewer.id };
-    if (this.props.viewer.completedCount != null) {
-      viewerPayload.completedCount = this.props.complete ?
-        this.props.viewer.completedCount + 1 :
-        this.props.viewer.completedCount - 1;
-    }
-    return {
-      todo: {
-        complete: this.props.complete,
-        id: this.props.todo.id,
-      },
-      viewer: viewerPayload,
     };
   }
 }

@@ -4,24 +4,24 @@ export default class AddTodoMutation extends Relay.Mutation {
   static fragments = {
     viewer: () => Relay.QL`
       fragment on User {
-        id,
-        totalCount,
+        id
+        totalCount
       }
     `,
   };
 
   getMutation() {
-    return Relay.QL`mutation{addTodo}`;
+    return Relay.QL`mutation { addTodo }`;
   }
 
   getFatQuery() {
     return Relay.QL`
       fragment on AddTodoPayload @relay(pattern: true) {
-        todoEdge,
+        todoEdge
         viewer {
-          todos,
-          totalCount,
-        },
+          todos
+          totalCount
+        }
       }
     `;
   }
@@ -33,35 +33,13 @@ export default class AddTodoMutation extends Relay.Mutation {
       parentID: this.props.viewer.id,
       connectionName: 'todos',
       edgeName: 'todoEdge',
-      rangeBehaviors: ({ status }) => {
-        if (status === 'completed') {
-          return 'ignore';
-        }
-        return 'append';
-      },
+      rangeBehaviors: () => 'append',
     }];
   }
 
   getVariables() {
     return {
       text: this.props.text,
-    };
-  }
-
-  getOptimisticResponse() {
-    return {
-      // FIXME: totalCount gets updated optimistically, but this edge does not
-      // get added until the server responds
-      todoEdge: {
-        node: {
-          complete: false,
-          text: this.props.text,
-        },
-      },
-      viewer: {
-        id: this.props.viewer.id,
-        totalCount: this.props.viewer.totalCount + 1,
-      },
     };
   }
 }
