@@ -1,0 +1,16 @@
+language: node_js
+node_js:
+- '4'
+- '5'
+- '6'
+- '7'
+install: true
+env:
+- EXAMPLE_PATH=./relay-treasurehunt
+- EXAMPLE_PATH=./star-wars
+- EXAMPLE_PATH=./todo
+- EXAMPLE_PATH=./react-native-TodoMVC
+- EXAMPLE_PATH=./koa2-simplified-todo
+- EXAMPLE_PATH=./koa2-todo
+script:
+  cd $EXAMPLE_PATH && npm install && npm run update-schema
