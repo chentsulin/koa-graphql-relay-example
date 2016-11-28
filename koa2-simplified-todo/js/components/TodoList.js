@@ -29,7 +29,6 @@ export default Relay.createContainer(TodoList, {
   fragments: {
     viewer: () => Relay.QL`
       fragment on User {
-        completedCount,
         todos(
           first: 2147483647  # max GraphQLInt
         ) {
@@ -40,7 +39,6 @@ export default Relay.createContainer(TodoList, {
             },
           },
         },
-        totalCount,
         ${Todo.getFragment('viewer')},
       }
     `,
